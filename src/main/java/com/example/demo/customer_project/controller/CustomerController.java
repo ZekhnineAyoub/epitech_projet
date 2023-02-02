@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -39,6 +40,20 @@ public class CustomerController {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerRequest,customer);
         customerRepository.save(customer);
+
+    }
+
+    @GetMapping(path = "all")
+    public List<Customer> getAllCustomer(){
+
+        List<Customer> customers = customerRepository.findAll();
+        Logger logger = Logger.getLogger(CustomerController.class.getName());
+
+
+        if(customers.isEmpty()){
+            logger.warning("list is empty");
+        }
+        return  customers;
 
     }
 

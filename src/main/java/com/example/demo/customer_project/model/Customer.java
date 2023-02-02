@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.Date;
 
-@Table(name = "customer")
 @Entity
 public class Customer {
 
